@@ -9,7 +9,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Kalichak Random Number Generator</a>
+    <a class="navbar-brand" href="#">Eat calculator</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -49,35 +49,30 @@
 </div>
 <button type="button" class="btn btn-primary" onclick="getRandomInt()">Генерировать</button>
 <button type="button" class="btn btn-primary" onclick="info()">О разработчике</button>
+<h1></h1>
 
-<script type="text/javascript">
-    getFactor();
-    async function getRandomInt()  {
-        await fetch("https://api.openweathermap.org/data/2.5/weather?lat=61.241780&lon=73.393028&units=metric&appid=e72f8bd76b8e708a662698694ba0ee24").then(response => response.json()).then(response => showAlert(response['main']['temp']));
-    }
+<script>
+    function getRandomInt() {
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://calorieninjas.p.rapidapi.com/v1/nutrition?query=cucumber",
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "calorieninjas.p.rapidapi.com",
+                "x-rapidapi-key": "0a50662cc2msh464a294ea0139e2p1a1c39jsn99cd127e3620"
+            }
+        };
 
-    async function getFactor()  {
-        await fetch("https://api.openweathermap.org/data/2.5/weather?lat=61.241780&lon=73.393028&units=metric&appid=e72f8bd76b8e708a662698694ba0ee24").then(response => response.json()).then(response => showFactor(response['main']['temp']));
-    }
-
-    function showAlert(numberToMax) {
-        min = $("#exampleFormControlInput1").val();
-        var result = Math.floor(Math.random() * (numberToMax - min));
-        console.log(result.toString());
-        alert(result)
-    }
-
-    async function showFactor(factor) {
-        document.getElementById('factor').textContent = 'За пример взято максимальный предел в виде фактора погоды из Сургута на аднный момент: ' + factor.toString()
+        $.ajax(settings).done(function (response) {
+            console.log(response["items"]["0"]);
+        });
     }
 
     function info() {
         inf = ('Каличак Евгений Олегович 015 группа')
         alert(inf)
     }
-
-
 </script>
-
 </body>
 </html>
