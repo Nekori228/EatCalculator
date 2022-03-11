@@ -3,9 +3,9 @@ table {
     text-align: left;
     border-collapse: separate;
     border-spacing: 5px;
-    background: #ece9e0;
-    color: #656665;
-    border: 16px solid #ece9e0;
+    background: #0d6efd;
+    color: black;
+    border: 5px solid #0d6efd;
     border-right: 20px;
 }
 th{
@@ -13,6 +13,6 @@ th{
     padding: 10px;
 }
 td{
-    background: #f5d7b7;
+    background: white;
     padding: 10px;
 }
